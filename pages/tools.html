@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="zh-CN"><head><title>AI 工具墙 · AI 专区</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/style.css"></head><body>
+<div class="topbar"><div class="topbar-inner"><div class="topbar-nav"><a href="https://gameinstitute.qq.com/" target="_blank">首页</a><a href="https://gameinstitute.qq.com/" target="_blank">知识库</a><a href="https://gameinstitute.qq.com/" target="_blank">知识专题</a><a href="https://gameinstitute.qq.com/" target="_blank">GDC</a><a href="https://gameinstitute.qq.com/" target="_blank">游TV</a><a href="../index.html" class="tb-active">AI WORLD</a></div><div class="topbar-right"><button class="topbar-search" onclick="openSM()">搜索</button><div class="topbar-avatar">A</div></div></div></div>
+<div class="app-layout"><aside class="sidebar"><div class="sidebar-brand"><div class="sidebar-logo">AI</div><div class="sidebar-brand-text">AI WORLD<small>游戏 AI 知识库</small></div></div><nav class="sidebar-nav">
+<a href="../index.html"><span class="sn-icon">🏠</span> 专区首页</a>
+<a href="articles.html"><span class="sn-icon">📝</span> AI 文章 <span class="sn-arrow">›</span></a>
+<a href="skills.html"><span class="sn-icon">⚡</span> Skill Hub <span class="sn-arrow">›</span></a>
+<a href="tools.html" class="sn-active"><span class="sn-icon">🔧</span> AI 工具墙 <span class="sn-arrow">›</span></a>
+<a href="what-is-skill.html"><span class="sn-icon">❓</span> 什么是 Skill</a>
+</nav><div class="sidebar-footer" style="padding:16px 20px;border-top:1px solid var(--border-light);font-size:11px;color:var(--text-tertiary)">© 2026 游戏知识库<br><a href="https://wj.qq.com/s2/26026989/0c20" target="_blank" style="color:var(--accent)">反馈建议</a></div></aside>
+<main class="main">
+<div class="page-hero fade-up"><h1>AI 工具墙</h1><p>游戏研发 AI 工具，标注司内/外部</p></div>
+<div class="page-controls fade-up d1"><div class="tabs"><button class="tab-btn active" onclick="fCat('全部')">精选</button><button class="tab-btn" onclick="fCat('美术生成')">美术</button><button class="tab-btn" onclick="fCat('问答方案')">问答</button><button class="tab-btn" onclick="fCat('技术生产')">技术</button><button class="tab-btn" onclick="fCat('效率工具')">效率</button></div><div class="tabs"><button class="tab-btn active" onclick="fSrc('全部',this)">全部</button><button class="tab-btn" onclick="fSrc('司内',this)">内部</button><button class="tab-btn" onclick="fSrc('外部',this)">外部</button></div></div>
+<div class="fade-up d2"><div class="tools-grid" id="allTools"></div></div>
+<div class="main-footer"><span>© 2026 游戏知识库 · AI 专区</span><div class="main-footer-links"><a href="https://gameinstitute.qq.com/" target="_blank">关于我们</a><a href="https://wj.qq.com/s2/26026989/0c20" target="_blank">反馈建议</a></div></div>
+</main></div>
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div><div class="detail-panel" id="detailPanel"><div class="panel-header"><button class="panel-fav" onclick="alert('已收藏')">♡</button><button class="panel-close" onclick="closePanel()">✕</button></div><div class="panel-body" id="panelBody"></div></div>
+<script src="../js/main.js"></script>
+<script>
+document.getElementById('allTools').innerHTML=TOOLS.map(t=>renderToolCard(t)).join('');
+function fCat(c){document.querySelectorAll('.tool-card-v2').forEach(x=>{x.style.display=(c==='全部'||x.dataset.category===c)?'':'none';});event.target.closest('.tabs').querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');}
+function fSrc(s,btn){btn.closest('.tabs').querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tool-card-v2').forEach(c=>{const i=c.querySelector('.badge-internal');if(s==='全部')c.style.display='';else if(s==='司内'&&i)c.style.display='';else if(s==='外部'&&!i)c.style.display='';else c.style.display='none';});}
+</script></body></html>
